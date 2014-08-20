@@ -15,11 +15,13 @@ Feel free to open issues and pull requests if you think something should be chan
 All changes made to this repo are synced to the CDN.
 It can take a few minutes for the changes to appear on the website.
 
-[jsDelivr – The advanced open source public CDN][11] -
+[jsDelivr – The advanced open source public CDN][11]
+
 [How jsDelivr works (outdated)][4]
 
 [Compare public CDNs][5]
 
+[jsDelivr community chat][12]
 
 # Why jsDelivr?
 
@@ -38,9 +40,9 @@ Multi-CDN
 
 Unlike the competition, jsDelivr uses multiple CDN providers which results in best possible uptime and performance. We currently use [MaxCDN][7] and [CloudFlare][8].
 
-On top of CDN providers, jsDelivr also utilizes custom servers in locations where CDNs don't have points of presence to further optimize the speed of file downloads for users on those locations.
+On top of CDN providers, jsDelivr also utilizes custom servers in locations where CDNs don't have points of presence to further optimize the speed of file downloads for users near those locations.
 
-If a CDN or custom server goes down, websites that use jsDelivr won't have any issues, because all traffic will be instantly redirected to remaining operational providers.
+If a CDN or custom server goes down, websites that use jsDelivr won't have any issues because all traffic will be instantly redirected to remaining operational providers.
 
 
 Smart Load Balancing
@@ -100,7 +102,24 @@ A version directory should contain the following:
 Auto-Updating
 -------------
 
-Coming soon - we are [working on it](https://github.com/jsdelivr/libgrabber)!
+jsDelivr can automatically keep a project up-to-date as new versions are released.
+Configuration is fast and easy: All you need to enable this feature for a project
+is to create an `update.json` file in its root directory along with the `info.ini`.
+
+##### Example ([*/files/humane.js/update.json*](https://github.com/jsdelivr/jsdelivr/blob/master/files/humane.js/update.json)):
+
+```json
+{
+  "packageManager": "github",
+  "name": "humane.js",
+  "repo": "wavded/humane-js",
+  "files": {
+    "include": ["humane.min.js", "humane.js", "./themes/**/*"]
+  }
+}
+```
+
+[Full documentation is available here.][13]
 
 
 # Usage
@@ -261,3 +280,5 @@ else if (w.attachEvent) { w.attachEvent('onload', a); }
   [9]: https://github.com/jsdelivr/jsdelivr/fork
   [10]: http://www.cedexis.com/
   [11]: https://hacks.mozilla.org/2014/03/jsdelivr-the-advanced-open-source-public-cdn/
+  [12]: https://gitter.im/jsdelivr/jsdelivr
+  [13]: https://github.com/jsdelivr/libgrabber#updatejson-schema
